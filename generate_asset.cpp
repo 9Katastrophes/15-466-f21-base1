@@ -75,8 +75,8 @@ void generate_sprites(PPU466 &ppu){
 				uint8_t color_bit0 = color_number & 1;
 				uint8_t color_bit1 = color_number >> 1 & 1;
 				
-				bit0_row += color_bit0 << (7 - x);
-				bit1_row += color_bit1 << (7 - x);
+				bit0_row += color_bit0 << x;
+				bit1_row += color_bit1 << x;
 			}
 
 			bit0[curr_row_id] = bit0_row;
