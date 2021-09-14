@@ -157,36 +157,28 @@ void generate_sprites(PPU466 &ppu){
 	//set the sprites
 	//player (spider alive) sprite
 	//set the position of this sprite in PlayMode.cpp
-	ppu.sprites[0].x = 0;
-	ppu.sprites[0].y = 0;
 	ppu.sprites[0].index = 0;
 	ppu.sprites[0].attributes = spider_alive;
 
 	//player (spider dead) sprite
 	//hidden initially and then swapped in when the player dies
-	ppu.sprites[1].x = 16;
-	ppu.sprites[1].y = 16;
 	ppu.sprites[1].index = 1;
 	ppu.sprites[1].attributes = spider_dead;
 
 	//cloud sprites - we have 5 of them
-	//they take up sprite slots 2-6
-	for (int i=0;i<5;i++){
-		ppu.sprites[i+2].x = i * 16 + 32;
-		ppu.sprites[i+2].y = i * 16 + 32;
-		ppu.sprites[i+2].x = 32 * i + 16;
-		ppu.sprites[i+2].y = 208;
-		ppu.sprites[i+2].index = 6;
-		ppu.sprites[i+2].attributes = cloud;
+	//they take up sprite slots 10-19
+	for (int i=10;i<20;i++){
+		ppu.sprites[i].x = 32 * i + 16;
+		ppu.sprites[i].y = 208 - 8 * (i - 10);
+		ppu.sprites[i].index = 6;
+		ppu.sprites[i].attributes = cloud;
 	}
 
-	//raindrop sprites - we have 10 of these, two for each cloud
+	//raindrop sprites - we have 10 of these, one for each cloud
 	//hidden initially and then teleported to drop underneath a cloud
-	//they take up sprite slots 7-16
-	for (int i=0;i<10;i++){
-		ppu.sprites[i+7].x = i * 16 + 112;
-		ppu.sprites[i+7].y = i * 16 + 112;
-		ppu.sprites[i+7].index = 2;
-		ppu.sprites[i+7].attributes = raindrop;
+	//they take up sprite slots 20-29
+	for (int i=20;i<30;i++){
+		ppu.sprites[i].index = 2;
+		ppu.sprites[i].attributes = raindrop;
 	}
 }
